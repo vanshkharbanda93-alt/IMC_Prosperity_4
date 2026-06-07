@@ -47,8 +47,8 @@ For `EMERALDS`, the strategy uses a fixed fair value of approximately `10000`.
 The strategy combines:
 
 - passive market making around fair value to capture the spread,
-- ticks based on weak inventory control,
-- cleanup logic -- when inventory becomes too one-sided sell/buy at fair value,
+- weak inventory control,
+- simple position management to avoid becoming too long or too short,
 - active taking when the market price is favourable relative to the fixed fair value.
 
 
