@@ -1,0 +1,16 @@
+# Core data analysis
+numpy
+pandas
+
+# Plotting and dashboard
+plotly
+streamlit
+
+# Scientific utilities
+scipy
+
+# IMC Prosperity strategy serialization/helper dependency
+jsonpickle
+
+# Optional plotting for static figures
+matplotlib
