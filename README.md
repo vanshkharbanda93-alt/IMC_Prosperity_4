@@ -62,7 +62,7 @@ Parts of the dashboard implementation were AI-assisted, mainly for scaffolding t
 
 This project benefited from the public IMC Prosperity community ecosystem.
 - [Ctrl-Alt-DefeatTheMarket](https://github.com/MarkBrezina/Ctrl-Alt-DefeatTheMarket)  
-  Used as a reference for basic trading strategy concepts, terminology, and general Prosperity-style thinking.
+  Used as a community reference for IMC Prosperity basics, including trading terminology, starter-trader setup, market-making intuition, backtesting workflow, and general strategy-development concepts.
 
 - [imc-prosperity-4-backtester](https://github.com/nabayansaha/imc-prosperity-4-backtester)  
   Used as the local backtesting framework for testing strategy variants before submission.
