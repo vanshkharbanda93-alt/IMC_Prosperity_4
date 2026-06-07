@@ -1,0 +1,63 @@
+# Python cache files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Jupyter notebooks
+.ipynb_checkpoints/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor / IDE files
+.vscode/
+.idea/
+
+# Temporary files
+*.tmp
+*.bak
+
+# Local experiment outputs
+debug_outputs/
+tmp/
+temp/
+
+# Raw/private competition archive files
+raw_data/
+raw_logs/
+archive_raw/
+old_experiments/
+
+# Large generated backtest folders
+backtest_outputs_raw/
+submission_logs_raw/
+
+# Streamlit / dashboard local secrets
+.streamlit/secrets.toml
+dashboard/.streamlit/secrets.toml
+
+# Environment/config files
+.env
+.env.local
+
+# Python packaging/build files
+build/
+dist/
+*.egg-info/
+
+# Test/cache folders
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Large compressed files
+*.zip
+*.tar
+*.tar.gz
