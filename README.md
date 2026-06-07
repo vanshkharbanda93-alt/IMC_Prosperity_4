@@ -15,6 +15,7 @@ The goal of this repository is not to reproduce every experiment from the compet
 | Final score | 253,209 Xirecs |
 
 This was a useful practical project for developing intuition around market making, fair-value estimation, position limits, inventory risk, backtesting, and fast strategy iteration under time pressure.
+Note: The country ranking reflects the team captain’s registered country on the leaderboard.
 
 ## Repository Structure
 
