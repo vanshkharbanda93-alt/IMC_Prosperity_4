@@ -55,9 +55,6 @@ Early analysis was done using notebooks and scripts. As the competition progress
 
 The dashboard was used to inspect product-level PnL, inventory paths, fills, spread behaviour, markouts, and comparisons between strategy versions. This helped us understand not only whether a strategy made money, but also why it made or lost money.
 
-## Dashboard Note
-Parts of the dashboard implementation were AI-assisted, mainly for scaffolding the Streamlit/Plotly interface. The important contribution was deciding which trading diagnostics were useful, adapting the dashboard to Prosperity logs, and using it to analyse strategy behaviour across rounds.
-
 ## External References
 
 This project benefited from the public IMC Prosperity community ecosystem.
