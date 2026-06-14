@@ -2,7 +2,7 @@
 
 This folder contains the tutorial-round analysis and representative trading strategy for **IMC Prosperity 4**.
 
-The tutorial round was mainly used to understand the competition interface, set up the local workflow, inspect the market data, and test simple strategy ideas before the main competitive rounds. For this round we mainly relied on the official simulator provided by IMC to test our strategies,
+The tutorial round was mainly used to understand the competition interface, set up the local workflow, inspect the market data, and test simple strategy ideas before the main competitive rounds. For this round we mainly relied on the official simulator provided by IMC to test our strategies.
 
 ## Products
 
