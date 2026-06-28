@@ -16,16 +16,25 @@ DATA_DIR = BASE / "data"
 DATA_DIR.mkdir(exist_ok=True)
 
 # Example: if files are prices_round_3_day_*.csv, use ROUND_NUMBER = 3
-ROUND_NUMBER = 3
+ROUND_NUMBER = 1
 
 # Change this filename whenever you run a new backtest / IMC log
-SUBMISSION_LOG = BASE / "logs" / "round4_result.log"
+#SUBMISSION_LOG = BASE.parent / "ROUND_4" / "logs" / "545123_round4_submission.log"
+SUBMISSION_LOG = BASE / "logs" / "round1_trader_experiment_all.log"
 
 # Folder containing prices_round_<ROUND_NUMBER>_day_*.csv and trades_round_<ROUND_NUMBER>_day_*.csv
-PRICE_DIR = BASE.parent / "ROUND_3"
+PRICE_DIR = BASE.parent / "ROUND_1"
 
 # Adds blank rows between days so Plotly does not draw fake connecting lines
 ADD_DAY_GAPS = True
+
+# PnL handling for submission logs:
+# - "preserve" keeps the PnL exactly as written in the backtester log.
+#   Use this when logs were generated with --merge-pnl.
+# - "accumulate" should only be used for logs where PnL resets each day.
+# The dashboard previously double-counted PnL because it accumulated logs that
+# were already cumulative.
+PNL_MODE = "preserve"
 
 # ============================================================
 
@@ -70,6 +79,43 @@ def add_market_features(market: pd.DataFrame) -> pd.DataFrame:
 
     return market
 
+
+
+def sanitize_order_book_prices(market: pd.DataFrame) -> pd.DataFrame:
+    """Convert impossible/missing price values to NA and recompute spread safely.
+
+    Some backtester/activity logs encode missing mid prices as 0 when one side
+    of the book is empty. If plotted directly, these create misleading vertical
+    lines down to zero.
+    """
+    if market.empty:
+        return market
+
+    market = market.copy()
+    price_cols = [
+        "bid_price_1", "bid_price_2", "bid_price_3",
+        "ask_price_1", "ask_price_2", "ask_price_3",
+        "mid_price",
+    ]
+
+    for col in price_cols:
+        if col in market.columns:
+            market.loc[market[col] <= 0, col] = pd.NA
+
+    if {"bid_price_1", "ask_price_1"}.issubset(market.columns):
+        valid_top = market["bid_price_1"].notna() & market["ask_price_1"].notna()
+
+        if "mid_price" in market.columns:
+            missing_mid = market["mid_price"].isna() & valid_top
+            market.loc[missing_mid, "mid_price"] = (
+                market.loc[missing_mid, "bid_price_1"] + market.loc[missing_mid, "ask_price_1"]
+            ) / 2
+            market.loc[~valid_top, "mid_price"] = pd.NA
+
+        market["spread"] = market["ask_price_1"] - market["bid_price_1"]
+        market.loc[~valid_top, "spread"] = pd.NA
+
+    return market
 
 def accumulate_pnl_across_days(market: pd.DataFrame) -> pd.DataFrame:
     if market.empty or "pnl" not in market.columns or "day" not in market.columns:
@@ -176,9 +222,18 @@ def normalize_market(market: pd.DataFrame) -> pd.DataFrame:
         if col in market.columns:
             market[col] = pd.to_numeric(market[col], errors="coerce")
 
+    market = sanitize_order_book_prices(market)
     market = add_market_features(market)
     market = make_time_index(market)
-    market = accumulate_pnl_across_days(market)
+
+    # Important: preserve PnL from backtester logs by default.
+    # If the log was produced with --merge-pnl, the PnL is already cumulative
+    # across days. Accumulating again will double-count later days in the dashboard.
+    if PNL_MODE == "accumulate":
+        market = accumulate_pnl_across_days(market)
+    elif "pnl" in market.columns:
+        market = market.copy()
+        market["day_pnl"] = market["pnl"]
 
     if ADD_DAY_GAPS:
         market = add_day_gap_rows(market)
@@ -485,6 +540,7 @@ def main():
         "log_file": SUBMISSION_LOG.name,
         "log_path": str(SUBMISSION_LOG),
         "log_format": log_format,
+        "pnl_mode": PNL_MODE,
         "price_dir": str(PRICE_DIR),
         "submission_market_rows": int(len(market)),
         "submission_fill_rows": int(len(fills)),
