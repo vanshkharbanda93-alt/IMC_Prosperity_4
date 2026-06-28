@@ -20,7 +20,7 @@ ROUND_NUMBER = 1
 
 # Change this filename whenever you run a new backtest / IMC log
 #SUBMISSION_LOG = BASE.parent / "ROUND_4" / "logs" / "545123_round4_submission.log"
-SUBMISSION_LOG = BASE / "logs" / "round1_original_all.log"
+SUBMISSION_LOG = BASE / "logs" / "round1_trader_experiment_all.log"
 
 # Folder containing prices_round_<ROUND_NUMBER>_day_*.csv and trades_round_<ROUND_NUMBER>_day_*.csv
 PRICE_DIR = BASE.parent / "ROUND_1"
