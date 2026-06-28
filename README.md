@@ -1,6 +1,6 @@
 # IMC Prosperity 4 — Cosmic_Trader
 
-This repository presents a curated, round-wise summary of our trading strategies, analysis workflow, and selected Python code developed during **IMC Prosperity 4**, a global algorithmic and manual trading competition hosted by IMC.
+This repository presents a round-wise summary of our trading strategies, analysis workflow, and selected Python code developed during **IMC Prosperity 4**, a global algorithmic and manual trading competition hosted by IMC.
 
 The goal of this repository is not to reproduce every experiment from the competition. Instead, it contains a polished reconstruction of the main ideas, tools, strategy iterations, and lessons learned from our participation.
 
