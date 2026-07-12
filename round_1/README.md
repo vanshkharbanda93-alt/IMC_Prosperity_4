@@ -1,4 +1,4 @@
-# Round 1
+# Round 1 - Trading Groundwork
 
 This folder contains the Round 1 analysis, manual trading notes, results, and representative submitted strategy for **IMC Prosperity 4**.
 

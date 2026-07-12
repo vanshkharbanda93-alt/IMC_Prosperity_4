@@ -75,31 +75,31 @@ Each round has its own folder with more detailed notes, notebooks, and selected 
 
 The tutorial round introduced the basic Prosperity setup: reading order books, submitting orders, staying within position limits, and keeping trader state across timestamps. There was no separate manual challenge in this round.
 
-### Round 1
+### Round 1 - Trading Groundwork
 
 The algorithmic challenge introduced `ASH_COATED_OSMIUM` and `INTARIAN_PEPPER_ROOT`. The main task was to understand their price behaviour from the historical order-book data and build simple trading logic around them.
 
 The manual challenge was an auction-style problem involving `DRYLAND_FLAX` and `EMBER_MUSHROOM`. Teams had to decide what orders to place using the information given in the prompt and the stated resale rules.
 
-### Round 2
+### Round 2 - Growing Your Outpost
 
 Round 2 continued the first phase of the competition, where the main goal was not only to make PnL but also to safely cross the 200,000 Xirec qualification threshold for Phase 2. The algorithmic challenge also included a game-theoretic element, where teams could compete for extra market share.
 
 The manual challenge was an allocation problem across `Research`, `Scale`, and `Speed`. The result depended partly on our own allocation and partly on what other teams were likely to do.
 
-### Round 3
+### Round 3 - Gloves off
 
 Round 3 introduced vouchers on `VELVETFRUIT_EXTRACT`. These behaved like options, so the round was about understanding the link between VFE and the voucher prices, and about how mistakes in the VFE price estimate could affect the voucher trades.
 
 The manual challenge was the Ornamental Bio-Pods bidding problem. Teams submitted two bids, and the result depended on both reserve-price probabilities and the average second bid submitted by all teams.
 
-### Round 4
+### Round 4 - Counterparty Intelligence & Exotic Derivatives
 
 Round 4 continued with `VELVETFRUIT_EXTRACT` and the vouchers, but now some bot identities were revealed in the trade data. This meant the challenge was not only about pricing the vouchers, but also about checking whether trades against certain bots contained useful information.
 
 The manual challenge was based on `AETHER_CRYSTAL` options. Teams had to choose an options portfolio under the payoff and pricing rules given in the prompt.
 
-### Round 5
+### Round 5 - The Final Stretch
 
 The final round added more products and made the challenge more connected across products. Products such as `PEBBLES` and `MICROCHIP` made it important to think about relationships between related markets and about managing several positions at the same time.
 
@@ -109,7 +109,7 @@ The manual challenge involved trading multiple goods on the Ignith exchange usin
 
 The `dashboard/` folder contains a Streamlit/Plotly dashboard used to inspect strategy behaviour. It parses Prosperity-style logs and csv fles and helps visualize PnL by product, price paths, spreads, fills, positions, and what happened after our trades.
 
-The dashboard was useful from the earlier rounds onward. During Round 5, it became even more important because we had to look at the features of 50 products and performing data analysis for all of them individually was not possible.
+The dashboard was useful from the earlier rounds onward. During Round 5, it became even more important because we had to look at the features of 50 products and an EDA for all of them individually would take a lot of time.
 
 ## External References
 
