@@ -1,4 +1,4 @@
-# Round 3 — Gloves Off
+# Round 3 - Gloves Off
 
 Round 3 introduced `VELVETFRUIT_EXTRACT` vouchers, which behaved like call options on `VELVETFRUIT_EXTRACT`. Our algorithmic strategy combined simple delta-one trading with  Black-Scholes / implied-volatility-based voucher pricing.
 

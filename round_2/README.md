@@ -1,4 +1,4 @@
-# Round 2 -- Growing Your Outpost
+# Round 2 - Growing Your Outpost
 
 This folder contains the Round 2 strategy notes, representative submitted trader, manual optimization script, and result summary for **IMC Prosperity 4**.
 
