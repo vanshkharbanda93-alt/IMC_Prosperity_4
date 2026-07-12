@@ -70,21 +70,21 @@ At this point in the competition, we were still relying mostly on IMC simulator 
 
 The manual challenge asked teams to submit two bids for Ornamental Bio-Pods. Each counterparty had a hidden reserve price between 670 and 920 XIRECs, and any pods we bought could later be sold for 920 XIRECs.
 
-We treated this as an expected-value problem with one extra game-theory layer. The first bid was mostly a simple tradeoff: bidding higher made it more likely that we would buy, but left less profit per pod. The second bid was trickier, because it also depended on what other teams were likely to submit. If our second bid was below the field's average second bid, our payoff was penalized.
+We treated this as a problem with two parts. First, we had to choose bids that made sense mathematically: bidding higher made it more likely that we would buy, but left less profit per pod. Second, we had to think about what other teams were likely to submit, because our second bid was penalized if it was below the average second bid submitted by all teams.
 
-Ignoring the game-theory penalty gives a useful baseline:
+If we ignore this penalty, the natural baseline is:
 
 $$
 b_1 \approx 753.33, \qquad b_2 \approx 836.67.
 $$
 
-So `b2 ≈ 837` was a natural starting point. If we thought the field average would be higher than that, then it made sense to move the second bid upward to avoid the penalty.
+So `b2 ≈ 837` was a useful starting point. If we expected the average second bid across all teams to be higher than that, then it made sense to move our second bid upward.
 
-We explored this in `manual_analysis/ornamental_biopods_manual_analysis.nb`, a small Mathematica notebook that plots expected-PnL heatmaps over the feasible `(b1, b2)` space. The notebook was mainly used as a visual aid. It helped us see how the best region moved when we changed our assumption about the field's average second bid.
+We explored this in `manual_analysis/ornamental_biopods_manual_analysis.nb`, a Mathematica notebook that plots expected-PnL heatmaps over the possible `(b1, b2)` values. The notebook was mainly used as a visual aid. It helped us see how the best region moved when we changed our assumption about the average second bid submitted by all teams.
 
-We checked scenarios with average second bids around 830, 850, and 870. Our initial higher-average scenario pointed toward bids around `(770, 870)`. However, after looking at a similar challenge from the previous year, we expected many teams to stay closer to the no-penalty optimum, with second bids closer to the low-to-mid 830s. Based on that, we adjusted our final bid downward.
+We checked scenarios where the average second bid was around 830, 850, and 870. Our initial higher-average scenario pointed toward bids around `(770, 870)`. However, after looking at a similar challenge from the previous year, we expected many teams to bid closer to the no-penalty baseline, with second bids closer to the low-to-mid 830s. Based on that, we adjusted our final bid downward.
 
-In hindsight, the actual average second bid was about 859, so our initial `(770, 870)` estimate was closer to the right idea. We moved away from it because we expected people to bid more like they did in a similar challenge from the previous year, where the second bids seemed closer to the low-to-mid 830s. This year the field was more aggressive, so lowering our bid ended up hurting us.
+In hindsight, the actual average second bid was about 859, so our initial `(770, 870)` estimate was closer to the right idea. We moved away from it because we expected people to bid more like they did in the previous year's similar challenge. This year, teams bid more aggressively, so lowering our bid ended up hurting us.
 
 
 ## Link to Round 4 Review
